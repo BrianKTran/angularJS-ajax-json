@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angular-ui-router/1.0.0-rc.1/angular-ui-router.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.4/angular-material.min.js"></script>
+
+<body>
+
+<div ng-app="myApp" > 
+
+<div ng-controller="myCtrl" class="container">
+
+<h2>Basic List</h2>
+
+
+ <!--  <h2>Basic Table</h2>
+  <table class="table">
+  <tr>
+    <th>Data will be outputted here:</th>
+    <th>and here</th>
+    <th>and here</th> 
+  
+  </tr>
+  <tr>
+    <td>{{student}}</td>
+    <td>{{student}}</td> 
+    <td>{{student}}</td>
+  </tr>
+  <tr>
+    <td>{{student}}</td>
+    <td>{{student}}</td> 
+    <td>{{student}}</td>
+  </tr>
+   <tr>
+    <td>{{student}}</td>
+    <td>{{student}}</td> 
+    <td>{{student}}</td>
+  </tr>
+</table>
+
+  </table>
+ -->
+ <ul class="list-group" >
+  <li class="list-group-item" ng-reapeat="student" >
+    {{student}}
+</li>
+
+<!-- <input type="submit" id="submit" value="Submit" /> -->
+
+</ul>
+
+</div>
+
+
+
+</div>
+
+<p>The $http service requests a page on the server, and the response is set as the value of the "student" variable.</p>
+
+<script>
+
+//ng-repeat http requeat 
+
+// angular.module('myApp', [])
+// .controller('myCtrl',function($scope, $http){
+
+//   //http response 
+// //$http.get('student.json').then(function(data){
+// $http.get('stud.json').then(function(data){
+//   //console.log(data);
+//         $scope.student = data; 
+
+
+//   });
+
+
+// });
+
+// w3 schools 
+
+var app = angular.module('myApp', []);
+//$.ajax({url: app, crossDomain:true, dataType: 'json', type: 'GET'})
+app.controller('myCtrl', function($scope, $http){
+  $http.get("student.json")
+ // $http.get("stud.json")
+  .then(function(response) {
+      $scope.student = response.data;
+  });
+        
+
+
+});
+
+
+ 
+// function myCtrl($scope){
+
+//   $scope.submit = function () {
+
+//   var app = angular.module('myApp', []);
+// //$.ajax({url: app, crossDomain:true, dataType: 'json', type: 'GET'})
+// app.controller('myCtrl', function($scope, $http){
+//   $http.get("student.json")
+//  // $http.get("stud.json")
+//   .done(function(response) {
+//       $scope.student = response.data;
+//       $scope.$apply();
+//       alert("data recieved!")
+//   })
+// .fail(function () {
+//   alert("not data recieved...")
+// });
+
+ 
+        
+
+
+// });
+
+// }
+ 
+// }
+ 
+ 
+
+
+ 
+
+</script>
+
+</body>
+</html>
